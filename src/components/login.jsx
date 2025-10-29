@@ -18,7 +18,7 @@ function LoginPage() {
       localStorage.setItem("token", res.data.token);
 
       alert("login successful");
-      navigate("/");
+      window.location.href = "/";
     } catch (err) {
       alert("login failed");
       console.log(err);
@@ -26,37 +26,49 @@ function LoginPage() {
   };
 
   return (
-    <div className="min-h-screes flex items-center justify-center bg-gradient-to-b from-blue-500 to-purple-600">
-      <div className="bg-white shadow-2xl rounded-2xl p-10 w-full max-w-md">
-        <h2 className="text-2xl font-bold text-center mb-6">Login</h2>
-        <form onSubmit={handleLogin} className="space-y-4">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500">
+      <div className="bg-white shadow-xl rounded-2xl p-8 w-full max-w-md">
+        <h2 className="text-3xl font-bold text-center text-gray-800 mb-6">
+          Welcome Back 👋
+        </h2>
+        <form onSubmit={handleLogin} className="space-y-5">
           <div>
-            <label className="block text-gray-700">Email:</label>
+            <label className="block text-sm font-medium text-gray-700 mb-1">
+              Email
+            </label>
             <input
-              className="w-full mt-1 p-3 border rounded-xl focus:ring-indigo-500"
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent placeholder-gray-400"
               type="email"
               value={email}
-              placeholder="Email"
+              placeholder="you@example.com"
               onChange={(e) => setEmail(e.target.value)}
+              required
             />
           </div>
           <div>
-            <label className="block text-gray-700">Password:</label>
+            <label className="block text-sm font-medium text-gray-700 mb-1">
+              Password
+            </label>
             <input
               type="password"
-              className="w-full mt-1 p-3 border rounded-xl focus:ring-indigo-500"
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent placeholder-gray-400"
               value={password}
-              placeholder="password"
+              placeholder="••••••••"
               onChange={(e) => setpassword(e.target.value)}
+              required
             />
           </div>
-          <div>
-            <button className="w-full bg-indigo-600 text-white py-3 border rounded-xl hover:bg-indigo-700 transition" type="submit">Login</button>
-          </div>
-          <p className="mt-2 text-center text-sm text-gray-500">
-            Don't have an account?{" "}
+          <button
+            className="w-full bg-indigo-600 text-white py-2.5 rounded-lg font-semibold hover:bg-indigo-700 transition-all"
+            type="submit"
+          >
+            Log In
+          </button>
+
+          <p className="mt-3 text-center text-sm text-gray-600">
+            Don’t have an account?{" "}
             <span
-              className="hover:underline cursor-pointer text-indigo-600"
+              className="text-indigo-600 hover:underline cursor-pointer"
               onClick={() => navigate("/signup")}
             >
               Sign Up
